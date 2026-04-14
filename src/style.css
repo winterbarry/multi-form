@@ -1,358 +1,58 @@
-/* global styles */
-
-* {
-  font-family: 'Noto Sans', sans-serif;
-}
-
-/* page & theme styles */
-
-body.dark-mode {
-  background: linear-gradient(to bottom, #040A1F, #060C27, #070F2F);
-  color: white;
-}
-
-body.light-mode {
-  background: linear-gradient(to bottom, #ecf3fd, #eef8fa, #eefafa);
-}
-
-/* main container styles */
-
-.main-container {
-  padding: 2rem 5rem 5rem 5rem;
-}
-
-/* extension bar styles */
-
-.extension-bar {
+.background {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  background-color: #1f2535;
-  border-radius: 12px;
-  padding: 5px;
-}
-
-body.light-mode .extension-bar {
-  background-color: white;
-}
-
-.extension-icon {
-  margin-top: 5px;
-  margin-left: 5px;
-}
-
-.style-button {
-  border: none;
-  border-radius: 6px;
-  padding: 7px 8px;
-  margin-top: 6px;
-  margin-right: 5px;
-}
-
-.style-button:hover {
-  cursor: pointer;
-}
-
-.style-button:focus {
-  outline: 2px solid #f15b54;
-  filter: brightness(1.2);
-}
-
-/* dark/light mode style buttons */
-
-body.dark-mode .style-button {
-  background-color: #2e344a;
-}
-
-body.dark-mode .style-button:hover {
-  filter: brightness(1.2);
-}
-
-body.light-mode .style-button:hover {
-  filter: brightness(0.8);
-}
-
-/* extension toggles bar styles */
-
-.extension-toggles {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  background-color: gray;
 }
 
-.extension-toggles-buttons {
+.layout {
   display: flex;
-  gap: 7px;
+  background-color: purple;
 }
 
-.extension-toggles-buttons button {
-  border: none;
-  border-radius: 9999px;
-  padding: 8px 10px;
-  cursor: pointer;
+.form-container {
+  /* background-color: wheat; */
+  padding: 2rem;
 }
 
-.extension-toggles-buttons button:first-child {
-  padding: 8px 16px;
+.sidebar {
+  background-color: blue;
 }
 
-/* dark mode toggle buttons */
-
-body.dark-mode .extension-toggles-buttons button {
-  background-color: #2f364b;
-  color: white;
+.main {
+  background-color: yellow;
 }
 
-body.dark-mode .extension-toggles-buttons button:hover {
-  filter: brightness(1.2);
-}
-
-body.dark-mode .extension-toggles-buttons button:focus {
-  outline: 2px solid #f15b54;
-  filter: brightness(1.2);
-}
-
-body.dark-mode .extension-toggles-buttons button:active {
-  background-color: #f15b54;
-  color: #1a1a1a;
-  border-color: #f15b54;
-}
-
-/* light mode toggle buttons */
-
-body.light-mode .extension-toggles-text {
-  color: #070F2F;
-}
-
-body.light-mode .extension-toggles-buttons button {
-  background-color: white;
-  color: #070F2F;
-}
-
-body.light-mode .extension-toggles-buttons button:hover {
-  opacity: 0.6;
-}
-
-body.light-mode .extension-toggles-buttons button:focus {
-  outline: 2px solid #f15b54;
-  opacity: 0.6;
-}
-
-body.light-mode .extension-toggles-buttons button:active {
-  background-color: #f15b54;
-  border-color: #f15b54;
-  color: white;
-}
-
-/* extensions list styles */
-
-.extensions-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding-top: 10px;
-}
-
-/* extension card styles */
-
-.extension-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px 20px;
-  border-radius: 12px;
-}
-
-/* dark/light mode item backgrounds */
-
-body.dark-mode .extension-item {
-  background-color: #1f2535;
-  outline: 1px solid #343a4a;
-}
-
-body.light-mode .extension-item {
-  background-color: white;
-}
-
-/* extension info styles */
-
-.extension-info {
-  height: 120px;
-  display: flex;
-  gap: 10px;
-}
-
-.extension-info h4,
-.extension-info p {
-  margin: 0;
-  padding: 0;
-}
-
-.extension-description {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.extension-description p {
-  color: #9498a1;
-}
-
-.extension-description p,
-.extension-description h4 {
-  margin: 0;
-  padding: 0;
-}
-
-/* extension actions styles */
-
-.extension-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.extension-actions button {
-  border-radius: 999px;
-  padding: 8px 10px;
-  border: none;
-}
-
-.extension-actions button:hover {
-  cursor: pointer;
-}
-
-/* dark mode extension action buttons */
-
-body.dark-mode .extension-actions button {
-  background-color: #1f2433;
-  color: white;
-  outline: 1px solid #343a4a;
-}
-
-body.dark-mode .extension-actions button:hover {
-  filter: brightness(1.2);
-}
-
-body.dark-mode .extension-actions button:focus {
-  outline: 2px solid #f15b54;
-  filter: brightness(1.2);
-}
-
-body.dark-mode .extension-actions button:active {
-  background-color: #f15b54;
-  color: #1a1a1a;
-  border-color: #f15b54;
-  filter: none;
-}
-
-/* light mode extension action buttons */
-
-body.light-mode .extension-actions button {
-  background-color: white;
-  color: black;
-  outline: 1px solid #e1e2e4;
-}
-
-body.light-mode .extension-actions button:hover {
-  opacity: 0.6;
-}
-
-body.light-mode .extension-actions button:focus {
-  outline: 2px solid #f15b54;
-  opacity: 0.6;
-}
-
-body.light-mode .extension-actions button:active {
-  background-color: #f15b54;
-  color: white;
-  border-color: #f15b54;
-}
-
-/* toggle switch styles */
-
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 24px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 24px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #f15d52;
-}
-
-input:checked + .slider:before {
-  transform: translateX(22px);
+.navigation {
+  background-color: purple;
 }
 
 /* mobile styles */
 
 @media (max-width: 768px) {
-  .extensions-list {
-    grid-template-columns: 1fr;
+  .background {
+    position: relative;
   }
 
-  .main-container {
-    padding: 0;
-  }
-
-  .extension-bar {
-    width: 100vw;
-  }
-
-  .extension-toggles {
-    flex-direction: column;
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding-bottom: 40px;
-    padding-top: 25px;
+    z-index: 10;
   }
 
-  .extension-toggles-text,
-  .extension-toggles-buttons {
-    width: 100%; 
-  }
+  .navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
-  .extension-toggles-text {
-    display: flex;
-    justify-content: center;
-  }
-
-  .extension-toggles-buttons {
     display: flex;
     justify-content: space-between;
-  }
+    padding: 1rem;
 
-  .extension-toggles-buttons button {
-    flex: 1; 
-    text-align: center;
+    z-index: 100;
   }
 }

@@ -1,38 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Extensions</title>
-</head>
-<body>
-    <div class="main-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Step Form</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="form-container">
+        <div class="layout">
+          <aside class="sidebar">
+            <section class="current-position">
+              <h2>Step Indicator</h2>
+              <p>Step 1 of 4</p>
+            </section>
+          </aside>
 
-        <div class="extension-bar">
-            <div class="extension-icon">
-                <img src="assets/images/logo-dark.svg" alt="extension-logo" class="logo">
-            </div>
-            <div class="page-styles">
-                <button class="style-button">
-                    <img src="assets/images/icon-sun.svg" alt="page-themes" class="theme-button">
-                </button>
-            </div>
+          <main class="main">
+            <section class="content">
+              <section class="form-content">
+                <header>
+                  <h1>Form Title</h1>
+                </header>
+
+                <form>
+                  <fieldset>
+                    <legend>User Information</legend>
+
+                    <label for="name">Name:</label>
+                    <input
+                      id="name"
+                      type="text"
+                      placeholder="Enter your name"
+                    />
+
+                    <br /><br />
+
+                    <label for="email">Email:</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="Enter your email"
+                    />
+
+                    <br /><br />
+
+                    <label for="plan">Plan:</label>
+                    <select id="plan">
+                      <option>Basic</option>
+                      <option>Pro</option>
+                      <option>Premium</option>
+                    </select>
+                  </fieldset>
+                </form>
+              </section>
+
+              <nav class="navigation" aria-label="Form navigation">
+                <button type="button">Back</button>
+                <button type="button">Next</button>
+              </nav>
+            </section>
+          </main>
         </div>
-
-        <div class="extension-toggles">
-            <div class="extension-toggles-text">
-                <h2>Extensions List</h2>
-            </div>
-            <div class="extension-toggles-buttons">
-                <button>All</button>
-                <button>Active</button>
-                <button>Inactive</button>
-            </div>
-        </div>
-
-        <div class="extensions-list">
-
-        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
