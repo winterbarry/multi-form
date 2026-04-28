@@ -31,17 +31,15 @@
 
           <main class="main">
             <section class="form-content">
-              <header>
-                <h1>Form Title</h1>
-              </header>
-
-              <!-- First Form -->
-              <form id="form-1">
+              <!-- FORM 1 -->
+              <form data-step="1">
                 <fieldset>
-                  <legend>User Information</legend>
-
                   <label for="name">Name:</label>
-                  <input id="name" type="text" placeholder="Enter your name" />
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="e.g. Stephen King"
+                  />
 
                   <br /><br />
 
@@ -49,22 +47,21 @@
                   <input
                     id="email"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="e.g. stephenking@lorem.com"
                   />
 
                   <br /><br />
 
-                  <label for="plan">Plan:</label>
-                  <select id="plan">
-                    <option>Basic</option>
-                    <option>Pro</option>
-                    <option>Premium</option>
-                  </select>
+                  <label for="phone">Phone Number:</label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    placeholder="e.g. +1 234 567 890"
+                  />
                 </fieldset>
               </form>
-
-              <!-- Second Form (hidden initially) -->
-              <form id="form-2" style="display: none">
+              <!-- FORM 2 -->
+              <form style="display: none" data-step="2">
                 <fieldset>
                   <legend>Additional Details</legend>
 
@@ -81,11 +78,118 @@
                   />
                 </fieldset>
               </form>
+              <!-- FORM 3 -->
+              <form style="display: none" data-step="3">
+                <fieldset>
+                  <legend>Add-ons</legend>
+
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="addon"
+                      value="online-service"
+                    />
+                    Online Service
+                  </label>
+
+                  <br /><br />
+
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="addon"
+                      value="larger-storage"
+                    />
+                    Larger Storage
+                  </label>
+
+                  <br /><br />
+
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="addon"
+                      value="custom-profile"
+                    />
+                    Custom Profile
+                  </label>
+                </fieldset>
+              </form>
+              <!-- FORM 4 -->
+              <form style="display: none" data-step="4">
+                <fieldset>
+                  <legend>Finishing Up</legend>
+
+                  <p>Please confirm your details before submitting:</p>
+
+                  <div class="summary">
+                    <p>
+                      <strong>Name:</strong>
+                      <span id="summary-name">John Doe</span>
+                    </p>
+                    <p>
+                      <strong>Email:</strong>
+                      <span id="summary-email">john@example.com</span>
+                    </p>
+                    <p>
+                      <strong>Phone:</strong>
+                      <span id="summary-phone">+123456789</span>
+                    </p>
+                    <p>
+                      <strong>Age:</strong> <span id="summary-age">25</span>
+                    </p>
+                    <p>
+                      <strong>Country:</strong>
+                      <span id="summary-country">USA</span>
+                    </p>
+                    <p>
+                      <strong>Add-ons:</strong>
+                      <span id="summary-addons">Online Service</span>
+                    </p>
+                  </div>
+
+                  <br />
+
+                  <p>Click confirm to complete your submission.</p>
+                </fieldset>
+              </form>
+              <!-- FORM 5 / CONFIRMATION -->
+              <div class="confirmation" style="display: none">
+                <div class="confirmation-content">
+                  <h2>Thank You!</h2>
+                  <p>Your form has been successfully submitted.</p>
+
+                  <p>
+                    We’ve received your details and will get back to you
+                    shortly.
+                  </p>
+
+                  <br />
+
+                  <p class="confirmation-summary">
+                    A confirmation message has been sent to your email.
+                  </p>
+                </div>
+              </div>
             </section>
 
-            <nav class="navigation" aria-label="Form navigation">
-              <button type="button">Back</button>
-              <button id="next-btn" type="button">Next</button>
+            <nav data-step="1">
+              <button data-action="next">Next</button>
+            </nav>
+
+            <nav data-step="2">
+              <button data-action="back">Back</button>
+              <button data-action="next">Next</button>
+            </nav>
+
+            <nav data-step="3">
+              <button data-action="back">Back</button>
+              <button data-action="next">Next</button>
+            </nav>
+
+            <nav data-step="4">
+              <button data-action="back">Back</button>
+              <button data-action="submit">Confirm</button>
             </nav>
           </main>
         </div>
