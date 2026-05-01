@@ -1,4 +1,5 @@
 import { showStep, showConfirmation } from "./render.js";
+import { validateStep } from "./validation.js";
 
 let currentStep = 1;
 
@@ -15,6 +16,10 @@ export function initNavigation() {
     const action = b.target.dataset.action;
 
     if (action === "next") {
+      if (!validateStep(currentStep)) {
+        return; // stop running if valiation fails
+      }
+
       if (currentStep < maxStep) {
         currentStep++;
         showStep(currentStep);
