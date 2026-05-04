@@ -1,3 +1,6 @@
+// store all form data for summary display
+export const formDataAll = {}
+
 // pass in the current step
 export function validateStep(step) {
   const validators = {
@@ -8,7 +11,7 @@ export function validateStep(step) {
   };
 
   const validate = validators[step]; // store the corresponding function for the current step
-  return validate ? validate() : true; // run the validation function, otherwise skip validation
+  return validate ? validate() : true; // run the corresponding function, otherwise return true
 }
 
 // step specific functions
@@ -48,11 +51,26 @@ function validateStep1() {
     return alert("Phone must contain only numbers");
   }
 
+  // store data in object after validation passes
+  formDataAll.step1 = {
+    name,
+    email,
+    phone
+  }
+
+  console.log(formDataAll);
+
   return true;
 }
 
-function validateStep2() {}
+function validateStep2() {
+  return true;
+}
 
-function validateStep3() {}
+function validateStep3() {
+  return true;
+}
 
-function validateStep4() {}
+function validateStep4() {
+  return true;
+}

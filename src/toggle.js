@@ -17,7 +17,7 @@ export function initNavigation() {
 
     if (action === "next") {
       if (!validateStep(currentStep)) {
-        return; // stop running if valiation fails
+        return; // stop running if line 11 in validation.js fails
       }
 
       if (currentStep < maxStep) {
