@@ -1,5 +1,5 @@
-// store all form data for summary display
-export const formDataAll = {}
+import { setStepData } from "./objStorage.js";
+import { getFormData } from "./objStorage.js";
 
 // pass in the current step
 export function validateStep(step) {
@@ -15,7 +15,6 @@ export function validateStep(step) {
 }
 
 // step specific functions
-
 function validateStep1() {
   const form = document.querySelector('form[data-step="1"]');
 
@@ -51,14 +50,10 @@ function validateStep1() {
     return alert("Phone must contain only numbers");
   }
 
-  // store data in object after validation passes
-  formDataAll.step1 = {
-    name,
-    email,
-    phone
-  }
+  // export key-value pair as argument for storage
+  setStepData("step1", { name, email, phone });
 
-  console.log(formDataAll);
+  console.log(getFormData());
 
   return true;
 }
