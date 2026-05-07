@@ -53,6 +53,7 @@ function validateStep1() {
   // export key-value pair as argument for storage
   setStepData("step1", { name, email, phone });
 
+  // display form data
   console.log(getFormData());
 
   return true;

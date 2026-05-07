@@ -70,18 +70,68 @@
                   <h1>Select your plan</h1>
                   <h3>You have the option of monthly or yearly billing.</h3>
 
-                  <label for="age">Age:</label>
-                  <input id="age" type="number" placeholder="Enter your age" />
+                  <div class="monthly-plans">
+                    <label>
+                      <input type="radio" name="plan" value="arcade-monthly" />
+                      Arcade ($9/mo)
+                    </label>
 
-                  <br /><br />
+                    <br /><br />
 
-                  <label for="country">Country:</label>
-                  <input
-                    id="country"
-                    type="text"
-                    placeholder="Enter your country"
-                  />
+                    <label>
+                      <input
+                        type="radio"
+                        name="plan"
+                        value="advanced-monthly"
+                      />
+                      Advanced ($12/mo)
+                    </label>
+
+                    <br /><br />
+
+                    <label>
+                      <input type="radio" name="plan" value="pro-monthly" />
+                      Pro ($15/mo)
+                    </label>
+                  </div>
+
+                  <div class="yearly-plans" style="display: none">
+                    <label>
+                      <input type="radio" name="plan" value="arcade-yearly" />
+                      Arcade ($90/yr)
+                    </label>
+
+                    <br /><br />
+
+                    <label>
+                      <input type="radio" name="plan" value="advanced-yearly" />
+                      Advanced ($120/yr)
+                    </label>
+
+                    <br /><br />
+
+                    <label>
+                      <input type="radio" name="plan" value="pro-yearly" />
+                      Pro ($150/yr)
+                    </label>
+                  </div>
                 </fieldset>
+
+                <br />
+
+                <!-- billing toggle -->
+                <div class="billing-toggle">
+                  <span class="toggle-label active" id="monthly-label"
+                    >Monthly</span
+                  >
+
+                  <label class="switch">
+                    <input type="checkbox" id="billing-toggle" />
+                    <span class="slider"></span>
+                  </label>
+
+                  <span class="toggle-label" id="yearly-label">Yearly</span>
+                </div>
               </form>
               <!-- FORM 3 -->
               <form style="display: none" data-step="3">
