@@ -70,3 +70,4 @@ function validateStep3() {
 function validateStep4() {
   return true;
 }
+

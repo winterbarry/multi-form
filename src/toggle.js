@@ -42,4 +42,18 @@ export function initNavigation() {
   showStep(currentStep);
 }
 
+// billing toggle
+const billingToggle = document.getElementById("billing-toggle");
 
+const monthlyPlans = document.querySelector(".monthly-plans");
+const yearlyPlans = document.querySelector(".yearly-plans");
+
+billingToggle.addEventListener("change", () => {
+  if (billingToggle.checked) {
+    monthlyPlans.style.display = "none";
+    yearlyPlans.style.display = "block";
+  } else {
+    monthlyPlans.style.display = "block";
+    yearlyPlans.style.display = "none";
+  }
+});
