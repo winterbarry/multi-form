@@ -132,6 +132,46 @@ function validateStep3() {
 
   return true;
 }
+let previousBillingMode = billingToggle.checked;
+
+billingToggle.addEventListener("change", () => {
+  const currentBillingMode = billingToggle.checked;
+
+  if (previousBillingMode !== currentBillingMode) {
+    resetStep2();
+    resetStep3();
+  }
+
+  previousBillingMode = currentBillingMode;
+});
+
+function resetStep2() {
+  // uncheck all plan radio buttons
+  const planInputs = document.querySelectorAll('input[name="plan"]');
+
+  planInputs.forEach((input) => {
+    input.checked = false;
+  });
+
+  // 2. remove stored step 2 data
+  setStepData("step2", []);
+
+  console.log("Step 2 selections cleared");
+}
+
+function resetStep3() {
+  // uncheck all addon checkboxes
+  const addonCheckboxes = document.querySelectorAll('input[name="addon"]');
+
+  addonCheckboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  // remove stored step3 data
+  setStepData("step3", []);
+
+  console.log("Step 3 selections cleared");
+}
 
 function validateStep4() {
   return true;
