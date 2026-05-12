@@ -61,9 +61,7 @@ function validateStep1() {
 
 function validateStep2() {
   // selected plan
-  const selectedPlan = document.querySelector(
-    'input[name="plan"]:checked'
-  );
+  const selectedPlan = document.querySelector('input[name="plan"]:checked');
 
   // toggle state
   const billingToggle = document.querySelector("#billing-toggle");
@@ -104,6 +102,34 @@ billingToggle.addEventListener("change", () => {
 });
 
 function validateStep3() {
+  // select monthly div if not hidden, otherwise select yearly
+  const activeContainer =
+    document.querySelector(".monthly-addons").style.display !== "none"
+      ? document.querySelector(".monthly-addons")
+      : document.querySelector(".yearly-addons");
+
+  // get checked checkboxes only from visible container
+  const checkedAddons = activeContainer.querySelectorAll(
+    'input[name="addon"]:checked',
+  );
+
+  // validation
+  if (checkedAddons.length < 1) {
+    alert("Please select at least one add-on");
+    return false;
+  }
+
+  // convert selections into array of objects
+  const addonsData = Array.from(checkedAddons).map((addon) => ({
+    addonName: addon.value,
+  }));
+
+  // store data
+  setStepData("step3", addonsData);
+
+  // display stored object
+  console.log(getFormData());
+
   return true;
 }
 

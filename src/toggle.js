@@ -41,5 +41,3 @@ export function initNavigation() {
   // initialize
   showStep(currentStep);
 }
-
-

@@ -24,18 +24,27 @@ export function showConfirmation() {
   document.querySelector(".confirmation").style.display = "block";
 }
 
-// billing toggle rendering
+// billing toggle and add-on rendering
 const billingToggle = document.getElementById("billing-toggle");
 
 const monthlyPlans = document.querySelector(".monthly-plans");
 const yearlyPlans = document.querySelector(".yearly-plans");
 
+const monthlyAddons = document.querySelector(".monthly-addons");
+const yearlyAddons = document.querySelector(".yearly-addons");
+
 billingToggle.addEventListener("change", () => {
   if (billingToggle.checked) {
     monthlyPlans.style.display = "none";
     yearlyPlans.style.display = "block";
+
+    monthlyAddons.style.display = "none";
+    yearlyAddons.style.display = "block";
   } else {
     monthlyPlans.style.display = "block";
     yearlyPlans.style.display = "none";
+
+    monthlyAddons.style.display = "block";
+    yearlyAddons.style.display = "none";
   }
 });
