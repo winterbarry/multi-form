@@ -60,8 +60,48 @@ function validateStep1() {
 }
 
 function validateStep2() {
+  // selected plan
+  const selectedPlan = document.querySelector(
+    'input[name="plan"]:checked'
+  );
+
+  // toggle state
+  const billingToggle = document.querySelector("#billing-toggle");
+
+  // validation
+  if (!selectedPlan) {
+    alert("Please select a payment plan");
+    return false;
+  }
+
+  // create object
+  const planData = {
+    selectedPlan: selectedPlan.value,
+    isYearly: billingToggle.checked,
+    billingType: billingToggle.checked ? "yearly" : "monthly",
+  };
+
+  // save object
+  setStepData("step2", planData);
+
+  // display stored data
+  console.log(getFormData());
+
   return true;
 }
+
+// select toggle
+const billingToggle = document.querySelector("#billing-toggle");
+
+// listen for changes
+billingToggle.addEventListener("change", () => {
+  const toggleData = {
+    isYearly: billingToggle.checked,
+    billingType: billingToggle.checked ? "yearly" : "monthly",
+  };
+
+  console.log(toggleData);
+});
 
 function validateStep3() {
   return true;
@@ -70,4 +110,3 @@ function validateStep3() {
 function validateStep4() {
   return true;
 }
-
