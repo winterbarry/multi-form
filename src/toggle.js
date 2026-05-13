@@ -45,3 +45,9 @@ export function initNavigation() {
   // initialize
   showStep(currentStep);
 }
+
+export function goToFirstStep() {
+  currentStep = 1;
+  showStep(currentStep);
+  console.log("sucess")
+}
