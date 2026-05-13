@@ -1,4 +1,4 @@
-import { showStep, showConfirmation } from "./render.js";
+import { showStep, showConfirmation, renderStep4 } from "./render.js";
 import { validateStep } from "./validation.js";
 
 let currentStep = 1;
@@ -31,6 +31,10 @@ export function initNavigation() {
         currentStep--;
         showStep(currentStep);
       }
+    }
+
+    if (currentStep === 4) {
+      renderStep4();
     }
 
     if (action === "submit") {

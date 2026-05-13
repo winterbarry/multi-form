@@ -7,7 +7,6 @@ export function validateStep(step) {
     1: validateStep1,
     2: validateStep2,
     3: validateStep3,
-    4: validateStep4,
   };
 
   const validate = validators[step]; // store the corresponding function for the current step
@@ -171,8 +170,4 @@ function resetStep3() {
   setStepData("step3", []);
 
   console.log("Step 3 selections cleared");
-}
-
-function validateStep4() {
-  return true;
 }
