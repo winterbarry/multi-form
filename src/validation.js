@@ -1,3 +1,4 @@
+// import functions for saving/retrieving data
 import { setStepData } from "./objStorage.js";
 import { getFormData } from "./objStorage.js";
 
@@ -14,16 +15,22 @@ export function validateStep(step) {
 }
 
 // step specific functions
+
 function validateStep1() {
+  // select form 1
   const form = document.querySelector('form[data-step="1"]');
 
+  // get input values
   const name = form.querySelector("#name").value.trim();
   const email = form.querySelector("#email").value.trim();
   const phone = form.querySelector("#phone").value.trim();
 
+  // validation patterns
   const nameRegex = /^[A-Za-z\s]+$/;
   const phoneRegex = /^[0-9+\s]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // field validations
 
   if (!name) {
     return alert("This field is required");
@@ -59,10 +66,10 @@ function validateStep1() {
 }
 
 function validateStep2() {
-  // selected plan
+  // store selected plan
   const selectedPlan = document.querySelector('input[name="plan"]:checked');
 
-  // toggle state
+  // store billing toggle state
   const billingToggle = document.querySelector("#billing-toggle");
 
   // validation
@@ -71,7 +78,7 @@ function validateStep2() {
     return false;
   }
 
-  // create object
+  // prevent continuing without a selected plan
   const planData = {
     selectedPlan: selectedPlan.value,
     isYearly: billingToggle.checked,
@@ -90,7 +97,7 @@ function validateStep2() {
 // select toggle
 const billingToggle = document.querySelector("#billing-toggle");
 
-// listen for changes
+// listen for changes in billing toggle
 billingToggle.addEventListener("change", () => {
   const toggleData = {
     isYearly: billingToggle.checked,
@@ -131,8 +138,13 @@ function validateStep3() {
 
   return true;
 }
+
+// RESET PLAN + ADDONS WHEN BILLING CHANGES
+
+// track previous toggle state
 let previousBillingMode = billingToggle.checked;
 
+// listen for billing toggle changes
 billingToggle.addEventListener("change", () => {
   const currentBillingMode = billingToggle.checked;
 

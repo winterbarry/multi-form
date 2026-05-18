@@ -1,49 +1,64 @@
+// import local storage functions
 import { setStepData } from "./objStorage.js";
 import { getFormData } from "./objStorage.js";
+
+// import navigation helper function
 import { goToFirstStep } from "./toggle.js";
 
+// display the active form
 export function showStep(step) {
   const forms = document.querySelectorAll("form[data-step]");
   const navs = document.querySelectorAll("nav[data-step]");
 
-  // loop through and find the matching step to display
+  // loop through and find the matching form to display
   forms.forEach((form) => {
     form.style.display = form.dataset.step == step ? "block" : "none";
   });
 
+  // loop through and find the matching navigation to display
   navs.forEach((nav) => {
     nav.style.display = nav.dataset.step == step ? "block" : "none";
   });
 }
 
+// show final confirmation screen
 export function showConfirmation() {
+  // hide all forms
   document.querySelectorAll("form[data-step]").forEach((f) => {
     f.style.display = "none";
   });
 
+  // hide all navigation bars
   document.querySelectorAll("nav[data-step]").forEach((n) => {
     n.style.display = "none";
   });
 
+  // display confirmation message
   document.querySelector(".confirmation").style.display = "block";
 }
 
 // billing toggle and add-on rendering
-const billingToggle = document.getElementById("billing-toggle");
+const billingToggle = document.getElementById("billing-toggle"); // select toggle input
 
+// select monthly and yearly plan containers
 const monthlyPlans = document.querySelector(".monthly-plans");
 const yearlyPlans = document.querySelector(".yearly-plans");
 
+// select monthly and yearly add-on containers
 const monthlyAddons = document.querySelector(".monthly-addons");
 const yearlyAddons = document.querySelector(".yearly-addons");
 
+// switch visible plans andadd-ons when toggle changes
 billingToggle.addEventListener("change", () => {
+  // show yearly plans
   if (billingToggle.checked) {
     monthlyPlans.style.display = "none";
     yearlyPlans.style.display = "block";
 
     monthlyAddons.style.display = "none";
     yearlyAddons.style.display = "block";
+
+    // show monthly plans
   } else {
     monthlyPlans.style.display = "block";
     yearlyPlans.style.display = "none";
@@ -53,9 +68,10 @@ billingToggle.addEventListener("change", () => {
   }
 });
 
-// back to form 1
+// select summary container
 const summaryDiv = document.querySelector(".summary");
 
+// eturn to first firm
 summaryDiv.addEventListener("click", (e) => {
   if (e.target.id === "change-plan-btn") {
     goToFirstStep();
@@ -73,9 +89,10 @@ export function renderStep4() {
   // clear previous summary content
   summaryDiv.innerHTML = "";
 
-  // ---------------- PLAN INFO ----------------
+  // track total price
   let total = 0;
 
+  // extract plan and billing info from form 2
   if (formDataAll.step2) {
     const { selectedPlan, billingType } = formDataAll.step2;
 
@@ -86,6 +103,7 @@ export function renderStep4() {
     // determine plan price
     let planPrice = 0;
 
+    // set monthly or yearly price for selected plans
     if (selectedPlan.includes("arcade")) {
       planPrice = billingType === "monthly" ? 9 : 90;
     }
@@ -98,8 +116,10 @@ export function renderStep4() {
       planPrice = billingType === "monthly" ? 15 : 150;
     }
 
+    // add to total price
     total += planPrice;
 
+    // append info to confirmation page / summary div
     summaryDiv.innerHTML += `
       <div class="summary-line">
         <div class="summary-plan-info">
@@ -123,12 +143,13 @@ export function renderStep4() {
   `;
   }
 
-  // ---------------- ADD-ONS ----------------
+  // loop through each add-on from stored array in objStorage
   if (formDataAll.step3 && Array.isArray(formDataAll.step3)) {
     formDataAll.step3.forEach((addon) => {
+      // track total addon price
       let addonPrice = 0;
 
-      // determine add-on price
+      // set monthly or yearly price for selected add-ons
       if (addon.addonName.includes("online-service")) {
         addonPrice = addon.billingType === "monthly" ? 1 : 10;
       }
@@ -141,14 +162,19 @@ export function renderStep4() {
         addonPrice = addon.billingType === "monthly" ? 2 : 20;
       }
 
+      // add to overall total
       total += addonPrice;
 
       // clean display text
       const formattedAddon = addon.addonName
         .replace("-monthly", "")
         .replace("-yearly", "")
-        .replaceAll("-", " ");
+        .replaceAll("-", " ")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 
+      // append info to confirmation page / summary div
       summaryDiv.innerHTML += `
         <div class="summary-line">
           <span>${formattedAddon}</span>
@@ -160,9 +186,10 @@ export function renderStep4() {
     });
   }
 
-  // ---------------- TOTAL ----------------
+  // select stored billingtype from objstorage
   const billingType = formDataAll.step2?.billingType;
 
+  // append total price to summary div / confirmation div
   summaryDiv.innerHTML += `
     <hr>
 
