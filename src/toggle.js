@@ -29,6 +29,7 @@ export function initNavigation() {
       if (currentStep < maxStep) {
         currentStep++;
         showStep(currentStep);
+        updateStepHighlight();
       }
     }
 
@@ -37,12 +38,14 @@ export function initNavigation() {
       if (currentStep > 1) {
         currentStep--;
         showStep(currentStep);
+        updateStepHighlight();
       }
     }
 
     // summary page rendering
     if (currentStep === 4) {
       renderStep4();
+      updateStepHighlight();
     }
 
     // final form / submit button
@@ -53,11 +56,30 @@ export function initNavigation() {
 
   // show the first step when the page loads
   showStep(currentStep);
+  updateStepHighlight();
 }
 
 // reset navigation back to form 1
 export function goToFirstStep() {
   currentStep = 1;
   showStep(currentStep);
+  updateStepHighlight();
   console.log("sucess");
+}
+
+// update sidebar number highlight
+function updateStepHighlight() {
+  // select all number elements in the sidebar
+  const stepNumbers = document.querySelectorAll(".number");
+
+  // loop through each number element
+  stepNumbers.forEach((number, index) => {
+    // remove the active class first, prevents multiple steps staying highlighted
+    number.classList.remove("active");
+
+    // add active class to visually highlight the current step
+    if (index + 1 === currentStep) {
+      number.classList.add("active");
+    }
+  });
 }

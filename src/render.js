@@ -7,6 +7,7 @@ import { goToFirstStep } from "./toggle.js";
 
 // display the active form
 export function showStep(step) {
+  // get all form and navigation divs
   const forms = document.querySelectorAll("form[data-step]");
   const navs = document.querySelectorAll("nav[data-step]");
 
