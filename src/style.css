@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: #eef5ff;
 }
 
 .layout {
@@ -12,8 +12,9 @@
 }
 
 .form-container {
-  background-color: wheat;
+  background-color: #fffeff;
   padding: 2rem;
+  border-radius: 10px;
 }
 
 .sidebar {
@@ -62,7 +63,7 @@
     z-index: 1;
   }
 
-  .nav-1 {
+  .nav[data-step] {
     position: absolute;
     bottom: 0;
     left: 0;
