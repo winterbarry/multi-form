@@ -30,31 +30,44 @@ function validateStep1() {
   const phoneRegex = /^[0-9+\s]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // get error elements
+  const nameError = document.querySelector("#name-error");
+  const emailError = document.querySelector("#email-error");
+  const phoneError = document.querySelector("#phone-error");
+
+  // clear previous errors
+  nameError.textContent = "";
+  emailError.textContent = "";
+  phoneError.textContent = "";
+
+  let isValid = true;
+
   // field validations
-
   if (!name) {
-    return alert("This field is required");
-  }
-
-  if (!nameRegex.test(name)) {
-    return alert("Name must contain only letters");
+    nameError.textContent = "This field is equired";
+    isValid = false;
+  } else if (!nameRegex.test(name)) {
+    nameError.textContent = "Letters only";
+    isValid = false;
   }
 
   if (!email) {
-    return alert("This field is required");
-  }
-
-  if (!emailRegex.test(email)) {
-    return alert("Please enter a valid email address");
+    emailError.textContent = "This field is equired";
+    isValid = false;
+  } else if (!emailRegex.test(email)) {
+    emailError.textContent = "Invalid email";
+    isValid = false;
   }
 
   if (!phone) {
-    return alert("This field is required");
+    phoneError.textContent = "This field is equired";
+    isValid = false;
+  } else if (!phoneRegex.test(phone)) {
+    phoneError.textContent = "Numbers only";
+    isValid = false;
   }
 
-  if (!phoneRegex.test(phone)) {
-    return alert("Phone must contain only numbers");
-  }
+  if (!isValid) return false;
 
   // export key-value pair as argument for storage
   setStepData("step1", { name, email, phone });
