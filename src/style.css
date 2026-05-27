@@ -274,6 +274,22 @@ button {
 }
 
 /* FORM 4 */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-plan-info {
+  display: flex;
+  flex-direction: column;
+}
 
 /* mobile styles */
 
