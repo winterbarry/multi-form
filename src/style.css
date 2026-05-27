@@ -168,6 +168,15 @@ button {
   height: 96px;
 }
 
+.card:hover {
+  border-color: #d2cfe4;
+}
+
+.card:has(input:checked) {
+  border-color: #d2cfe4;
+  background-color: #f8f9fe;
+}
+
 .plan-price {
   color: #c4c3c6;
 }
@@ -223,8 +232,29 @@ button {
 }
 
 /* Billing Toggle Label */
+.toggle-label {
+  color: #c4c3c6;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.toggle-label.active {
+  color: #02295a;
+}
 
 /* FORM 3 */
+
+.addon-title {
+  color: #495e79;
+}
+
+.addon-info {
+  color: #c4c3c6;
+}
+
+.addon-price {
+  color: #6057ac;
+}
 .monthly-addons input,
 .yearly-addons input {
   appearance: none;

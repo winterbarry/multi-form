@@ -49,6 +49,10 @@ const yearlyPlans = document.querySelector(".yearly-plans");
 const monthlyAddons = document.querySelector(".monthly-addons");
 const yearlyAddons = document.querySelector(".yearly-addons");
 
+// select monthly and yearly labels besides toggle
+const monthlyLabel = document.getElementById("monthly-label");
+const yearlyLabel = document.getElementById("yearly-label");
+
 // switch visible plans andadd-ons when toggle changes
 billingToggle.addEventListener("change", () => {
   // show yearly plans
@@ -59,6 +63,10 @@ billingToggle.addEventListener("change", () => {
     monthlyAddons.style.display = "none";
     yearlyAddons.style.display = "block";
 
+    // toggle active label
+    yearlyLabel.classList.add("active");
+    monthlyLabel.classList.remove("active");
+
     // show monthly plans
   } else {
     monthlyPlans.style.display = "block";
@@ -66,6 +74,10 @@ billingToggle.addEventListener("change", () => {
 
     monthlyAddons.style.display = "block";
     yearlyAddons.style.display = "none";
+
+    // toggle active label
+    monthlyLabel.classList.add("active");
+    yearlyLabel.classList.remove("active");
   }
 });
 
