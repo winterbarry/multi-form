@@ -13,12 +13,12 @@ export function showStep(step) {
 
   // loop through and find the matching form to display
   forms.forEach((form) => {
-    form.style.display = form.dataset.step == step ? "block" : "none";
+    form.style.display = form.dataset.step == step ? "flex" : "none";
   });
 
   // loop through and find the matching navigation to display
   navs.forEach((nav) => {
-    nav.style.display = nav.dataset.step == step ? "block" : "none";
+    nav.style.display = nav.dataset.step == step ? "flex" : "none";
   });
 }
 
@@ -35,7 +35,7 @@ export function showConfirmation() {
   });
 
   // display confirmation message
-  document.querySelector(".confirmation").style.display = "block";
+  document.querySelector(".confirmation").style.display = "flex";
 }
 
 // billing toggle and add-on rendering
@@ -91,16 +91,18 @@ summaryDiv.addEventListener("click", (e) => {
   }
 });
 
-// form 4 rendering
+// form 4 / summary rendering
 export function renderStep4() {
   // get stored form data
   const formDataAll = getFormData();
 
   // select summary div
   const summaryDiv = document.querySelector(".summary");
+  const summaryTotalDiv = document.querySelector(".summary-total");
 
   // clear previous summary content
   summaryDiv.innerHTML = "";
+  summaryTotalDiv.innerHTML = "";
 
   // track total price
   let total = 0;
@@ -136,9 +138,7 @@ export function renderStep4() {
     summaryDiv.innerHTML += `
       <div class="summary-line">
         <div class="summary-plan-info">
-          <span>
-            ${formattedPlan} (${billingType})
-          </span>
+          <span>${formattedPlan} (${billingType})</span>
 
           <button
             type="button"
@@ -153,7 +153,9 @@ export function renderStep4() {
           $${planPrice}/${billingType === "monthly" ? "mo" : "yr"}
         </span>
       </div>
-  `;
+
+      <hr class="summary-divider">
+    `;
   }
 
   // loop through each add-on from stored array in objStorage
@@ -203,14 +205,10 @@ export function renderStep4() {
   const billingType = formDataAll.step2?.billingType;
 
   // append total price to summary div / confirmation div
-  summaryDiv.innerHTML += `
-    <hr>
-
-    <div class="summary-total">
+  summaryTotalDiv.innerHTML = `
       <strong>Total</strong>
       <strong>
         $${total}/${billingType === "monthly" ? "mo" : "yr"}
       </strong>
-    </div>
   `;
 }

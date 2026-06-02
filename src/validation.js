@@ -25,6 +25,16 @@ function validateStep1() {
   const email = form.querySelector("#email").value.trim();
   const phone = form.querySelector("#phone").value.trim();
 
+  // get input field for error stylings
+  const nameInput = form.querySelector("#name");
+  const emailInput = form.querySelector("#email");
+  const phoneInput = form.querySelector("#phone");
+
+  // add class to input for error stylings
+  nameInput.classList.remove("input-error");
+  emailInput.classList.remove("input-error");
+  phoneInput.classList.remove("input-error");
+
   // validation patterns
   const nameRegex = /^[A-Za-z\s]+$/;
   const phoneRegex = /^[0-9+\s]+$/;
@@ -42,28 +52,34 @@ function validateStep1() {
 
   let isValid = true;
 
-  // field validations
+  // Field Validations
   if (!name) {
-    nameError.textContent = "This field is equired";
+    nameError.textContent = "This field is required";
+    nameInput.classList.add("input-error");
     isValid = false;
   } else if (!nameRegex.test(name)) {
     nameError.textContent = "Letters only";
+    nameInput.classList.add("input-error");
     isValid = false;
   }
 
   if (!email) {
-    emailError.textContent = "This field is equired";
+    emailError.textContent = "This field is required";
+    emailInput.classList.add("input-error");
     isValid = false;
   } else if (!emailRegex.test(email)) {
     emailError.textContent = "Invalid email";
+    emailInput.classList.add("input-error");
     isValid = false;
   }
 
   if (!phone) {
-    phoneError.textContent = "This field is equired";
+    phoneError.textContent = "This field is required";
+    phoneInput.classList.add("input-error");
     isValid = false;
   } else if (!phoneRegex.test(phone)) {
     phoneError.textContent = "Numbers only";
+    phoneInput.classList.add("input-error");
     isValid = false;
   }
 
