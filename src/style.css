@@ -18,6 +18,12 @@
   background-color: #fffeff;
   padding: 2rem;
   border-radius: 10px;
+
+  width: 750px;
+  height: 500px;
+  display: flex;
+
+  overflow: hidden;
 }
 
 .layout {
@@ -34,10 +40,11 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
 
   padding: 2rem;
+
+  width: 200px;
 }
 
 /* Individual Step Styles */
@@ -99,14 +106,14 @@
 
   display: flex;
   flex-direction: column;
+  flex: 1;
+
+  padding: 1rem;
 }
 
 .form-content {
-  padding: 1rem;
-
   flex: 1;
-  min-width: 0;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 /* headings */
@@ -416,11 +423,9 @@ form[data-step="2"] {
 ========================= */
 
 nav {
-  display: flex;
   width: 100%;
   flex-shrink: 0;
   justify-content: space-between;
-  /* padding: 2rem; */
 }
 
 /* buttons */
