@@ -58,10 +58,10 @@ billingToggle.addEventListener("change", () => {
   // show yearly plans
   if (billingToggle.checked) {
     monthlyPlans.style.display = "none";
-    yearlyPlans.style.display = "block";
+    yearlyPlans.style.display = "flex";
 
     monthlyAddons.style.display = "none";
-    yearlyAddons.style.display = "block";
+    yearlyAddons.style.display = "flex";
 
     // toggle active label
     yearlyLabel.classList.add("active");
@@ -69,10 +69,10 @@ billingToggle.addEventListener("change", () => {
 
     // show monthly plans
   } else {
-    monthlyPlans.style.display = "block";
+    monthlyPlans.style.display = "flex";
     yearlyPlans.style.display = "none";
 
-    monthlyAddons.style.display = "block";
+    monthlyAddons.style.display = "flex";
     yearlyAddons.style.display = "none";
 
     // toggle active label
@@ -136,26 +136,33 @@ export function renderStep4() {
 
     // append info to confirmation page / summary div
     summaryDiv.innerHTML += `
-      <div class="summary-line">
+      <div class="summary-line summary-plan-row">
+
         <div class="summary-plan-info">
-          <span>${formattedPlan} (${billingType})</span>
+
+          <div class="summary-plan-top">
+            <span class="summary-plan-name">Arcade</span>
+            <span class="summary-plan-billing">(monthly)</span>
+          </div>
 
           <button
             type="button"
-            class="change-btn"
+            class="change-btn summary-change-btn"
             id="change-plan-btn"
           >
             Change
           </button>
+
         </div>
 
-        <span>
+        <span class="summary-plan-price">
           $${planPrice}/${billingType === "monthly" ? "mo" : "yr"}
         </span>
+
       </div>
 
       <hr class="summary-divider">
-    `;
+  `;
   }
 
   // loop through each add-on from stored array in objStorage
@@ -191,11 +198,16 @@ export function renderStep4() {
 
       // append info to confirmation page / summary div
       summaryDiv.innerHTML += `
-        <div class="summary-line">
-          <span>${formattedAddon}</span>
-          <span>
+        <div class="summary-line summary-addon-row">
+
+          <span class="summary-addon-name">
+            ${formattedAddon}
+          </span>
+
+          <span class="summary-addon-price">
             +$${addonPrice}/${addon.billingType === "monthly" ? "mo" : "yr"}
           </span>
+
         </div>
       `;
     });
@@ -204,11 +216,21 @@ export function renderStep4() {
   // select stored billingtype from objstorage
   const billingType = formDataAll.step2?.billingType;
 
+  const billingLabel =
+  billingType === "monthly" ? "per month" : "per year";
+
   // append total price to summary div / confirmation div
   summaryTotalDiv.innerHTML = `
-      <strong>Total</strong>
-      <strong>
+    <div class="summary-total-row">
+
+      <strong class="summary-total-label">
+        Total (${billingLabel})
+      </strong>
+
+      <strong class="summary-total-value">
         $${total}/${billingType === "monthly" ? "mo" : "yr"}
       </strong>
+
+    </div>
   `;
 }
